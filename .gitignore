@@ -1,3 +1,6 @@
+# build dir
+build/
+
 # C++ objects and libs
 
 *.slo
@@ -36,4 +39,3 @@ Makefile*
 
 # QtCtreator CMake
 CMakeLists.txt.user*
-
