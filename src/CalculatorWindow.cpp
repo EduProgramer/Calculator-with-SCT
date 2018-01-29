@@ -17,6 +17,15 @@ CalculatorWindow::CalculatorWindow( QWidget* parent )
     ui->setupUi( this );
 }
 
+CalculatorWindow::~CalculatorWindow() { delete ui; }
+
+std::string CalculatorWindow::getScreenState()
+{
+    std::string screenState =
+        ui->inputDisplay->displayText().toUtf8().constData();
+    return screenState;
+}
+
 void CalculatorWindow::on_inputNum0_clicked() { assert( 0 ); }
 void CalculatorWindow::on_inputNum1_clicked() {}
 void CalculatorWindow::on_inputNum2_clicked() {}
@@ -32,5 +41,3 @@ void CalculatorWindow::on_inputOperDivis_clicked() {}
 void CalculatorWindow::on_inputOperMinus_clicked() {}
 void CalculatorWindow::on_inputOperMulti_clicked() {}
 void CalculatorWindow::on_inputOperPlus_clicked() {}
-
-CalculatorWindow::~CalculatorWindow() { delete ui; }

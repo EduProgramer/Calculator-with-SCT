@@ -36,7 +36,7 @@ using namespace http;
 using namespace utility;
 using namespace http::experimental::listener;
 
-
+/*
 struct People
 {
     utility::string_t name;
@@ -106,7 +106,7 @@ struct Data
         res[U( "people" )] = jPeoples;
         return res;
     }
-};
+};*/
 
 class CalculatorWindow;
 
@@ -114,9 +114,15 @@ class SctServer
 {
 public:
     SctServer( CalculatorWindow& );
+    ~SctServer();
 
 private:
     CalculatorWindow& calculatorWindow;
+    http_listener m_listener;
+
+    void handle_post( http_request message );
+    void initializeListener();
+    void shutdownListener();
 };
 /*
 class SctServer

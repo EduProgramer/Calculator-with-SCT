@@ -19,7 +19,42 @@ using namespace web::http::experimental::listener;
 SctServer::SctServer( CalculatorWindow& calculatorWindow )
     : calculatorWindow{ calculatorWindow }
 {
+    utility::string_t port = U( "34568" );
+    utility::string_t address = U( "http://localhost:" );
+    address.append( port );
+
+    uri_builder uri( address );
+    uri.append_path( U( "SctServer/Action/" ) );
+
+    auto addr = uri.to_uri().to_string();
+    m_listener = http_listener( addr );
+
+    m_listener.support(
+        methods::POST,
+        std::bind( &SctServer::handle_post, this, std::placeholders::_1 ) );
+
+    m_listener.open().wait();
+
+    ucout << utility::string_t( U( "Listening for requests at: " ) ) << addr
+          << std::endl;
 }
+
+SctServer::~SctServer()
+{
+    m_listener.close().wait();
+    return;
+}
+
+void SctServer::handle_post( http_request message )
+{
+    ucout << message.to_string() << endl;
+
+    // TODO add event handling
+
+    utility::string_t screenState = calculatorWindow.getScreenState();
+
+    message.reply( status_codes::OK, web::json::value::parse( screenState ) );
+};
 
 /*
 SctServer::SctServer( utility::string_t url ) : m_listener( url )
