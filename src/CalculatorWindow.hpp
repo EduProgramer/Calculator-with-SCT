@@ -26,7 +26,7 @@ public:
 
     std::string getScreenState();
 
-private slots:
+public slots:
     void on_inputNum0_clicked();
     void on_inputNum1_clicked();
     void on_inputNum2_clicked();

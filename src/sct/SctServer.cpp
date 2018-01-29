@@ -45,25 +45,91 @@ SctServer::~SctServer()
     return;
 }
 
-void SctServer::handle_post( http_request message )
+void SctServer::handle_input( std::string input )
 {
-    ucout << message.to_string() << endl;
+    resetInputErrorFlags();
+    // TODO Refactoring
+    if ( not( input.size() == 1 ) )
+    {
+        badServerInput = true;
+    }
 
-    // TODO add event handling
+    char keySymbol = input.front();
 
-    utility::string_t screenState = calculatorWindow.getScreenState();
+    // TODO add library for logging input, and errors localy
 
-    message.reply( status_codes::OK, web::json::value::parse( screenState ) );
-};
+    switch ( keySymbol )
+    {
+        case '+':
+            calculatorWindow.on_inputOperPlus_clicked();
+            break;
+        case '-':
+            calculatorWindow.on_inputOperMinus_clicked();
+            break;
+        case '*':
+            calculatorWindow.on_inputOperMulti_clicked();
+            break;
+        case '/':
+            calculatorWindow.on_inputOperDivis_clicked();
+            break;
+        case '0':
+            // TODO add support for 0
+            break;
+        case '1':
+            calculatorWindow.on_inputNum1_clicked();
+            break;
+        case '2':
+            calculatorWindow.on_inputNum2_clicked();
+            break;
+        case '3':
+            calculatorWindow.on_inputNum3_clicked();
+            break;
+        case '4':
+            calculatorWindow.on_inputNum4_clicked();
+            break;
+        case '5':
+            calculatorWindow.on_inputNum5_clicked();
+            break;
+        case '6':
+            calculatorWindow.on_inputNum6_clicked();
+            break;
+        case '7':
+            calculatorWindow.on_inputNum7_clicked();
+            break;
+        case '8':
+            calculatorWindow.on_inputNum8_clicked();
+            break;
+        case '9':
+            calculatorWindow.on_inputNum9_clicked();
+            break;
+        default:
+            unknownInput = true;
+            break;
+    }
 
     return;
 }
 
+void SctServer::resetInputErrorFlags()
 {
+    badServerInput = false;
+    unknownInput = false;
+}
 
 void SctServer::handle_post( http_request message )
 {
+    handle_input( message.extract_utf8string().get() );
+    message.reply( status_codes::OK, getStateAsJson() );
 }
 
+json::value SctServer::getStateAsJson()
 {
+    utility::string_t screenState = calculatorWindow.getScreenState();
+    auto state = json::value::object();
+    state["screenState"] = json::value::string( screenState );
+    state["badServerInput"] = json::value::boolean( badServerInput );
+    state["unknownInput"] = json::value::boolean( unknownInput );
 
+    // TODO chck if relase is made with SCT server
+    return state;
+}

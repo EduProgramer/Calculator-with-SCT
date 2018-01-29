@@ -47,9 +47,11 @@ public:
 private:
     CalculatorWindow& calculatorWindow;
     http_listener m_listener;
+    bool badServerInput = false;
+    bool unknownInput = false;
 
+    void handle_input( std::string input );
+    void resetInputErrorFlags();
     void handle_post( http_request message );
-    void initializeListener();
-    void shutdownListener();
-};
+    json::value getStateAsJson();
 };
