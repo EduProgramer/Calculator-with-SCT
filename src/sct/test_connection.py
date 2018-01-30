@@ -1,7 +1,7 @@
 import pytest
 import shlex, subprocess
 import time
-from connect_calculator import connect_with_post_to_calculator
+from connect_calculator import input_to_calculator, serial_input_to_calculator
 
 @pytest.fixture
 def calculator_app():
@@ -16,13 +16,14 @@ def calculator_app():
 
 def test_connection1(calculator_app):
     print("test_connection1")
-    connect_with_post_to_calculator("1")
-    connect_with_post_to_calculator("=")
+    serial_input_to_calculator("1+2352+45234*234=*141+2352+45234*234=*141+2352+45234*234=*14")
+    result = input_to_calculator("6")
+    assert result["screenState"] == "621+"
 
 def test_connection2(calculator_app):
     print("test_connection2")
-    connect_with_post_to_calculator("+")
+    input_to_calculator("+")
 
 def test_connection3(calculator_app):
     print("test_connection2")
-    connect_with_post_to_calculator("asdasd")
+    input_to_calculator("asdasd")

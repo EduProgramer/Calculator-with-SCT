@@ -1,12 +1,20 @@
-import errno, time
-import requests, json
+import http.client
+import urllib
+import time
+import json
 
-def connect_with_post_to_calculator(payload):
-    calculator_address = "http://localhost:34568/SctServer/Action/"
+def input_to_calculator(payload):
+    headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
+    conn = http.client.HTTPConnection("localhost:34568")
+    conn.request("POST", "/SctServer/Action", payload, headers)
+    response = conn.getresponse()
+    #print (response.status, response.reason)
+    data = response.read()
+    conn.close()
+    time.sleep(0.1)
+    return json.loads(data)
 
-    s = requests.Session()
-
-    # TODO uniform data format for communication
-    r = requests.post(calculator_address, data=payload)
-    print(r.status_code)
-    print(r.text)
+def serial_input_to_calculator(inputs):
+    for input in inputs:
+        result = input_to_calculator(input)
+    return result

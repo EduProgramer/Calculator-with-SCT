@@ -45,16 +45,16 @@ SctServer::~SctServer()
     return;
 }
 
-void SctServer::handle_input( std::string input )
+void SctServer::handle_input()
 {
     resetInputErrorFlags();
     // TODO Refactoring
-    if ( not( input.size() == 1 ) )
+    if ( not( current_input.size() == 1 ) )
     {
         badServerInput = true;
     }
 
-    char keySymbol = input.front();
+    char keySymbol = current_input.front();
 
     // TODO add library for logging input, and errors localy
 
@@ -118,7 +118,8 @@ void SctServer::resetInputErrorFlags()
 
 void SctServer::handle_post( http_request message )
 {
-    handle_input( message.extract_utf8string().get() );
+    current_input = message.extract_utf8string().get();
+    handle_input();
     message.reply( status_codes::OK, getStateAsJson() );
 }
 
@@ -126,10 +127,10 @@ json::value SctServer::getStateAsJson()
 {
     utility::string_t screenState = calculatorWindow.getScreenState();
     auto state = json::value::object();
+    state["input"] = json::value::string( current_input );
     state["screenState"] = json::value::string( screenState );
     state["badServerInput"] = json::value::boolean( badServerInput );
     state["unknownInput"] = json::value::boolean( unknownInput );
 
-    // TODO chck if relase is made with SCT server
     return state;
 }
