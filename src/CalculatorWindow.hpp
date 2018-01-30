@@ -1,11 +1,9 @@
 /**
- * @Author: Jakub
- * @Date:   2018-01-22T15:06:40+01:00
+ * @Author: jakub
  * @Project: Calculator with SCT
- * @Last modified by:   Jakub
- * @Last modified time: 2018-01-22T15:06:45+01:00
  * @License: MIT
  */
+
 
 #pragma once
 

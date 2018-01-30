@@ -1,11 +1,9 @@
 /**
- * @Author: Jakub
- * @Date:   2018-01-22T15:06:31+01:00
+ * @Author: jakub
  * @Project: Calculator with SCT
- * @Last modified by:   Jakub
- * @Last modified time: 2018-01-22T15:09:06+01:00
  * @License: MIT
  */
+
 
 #include "CalculatorWindow.hpp"
 #include <QApplication>

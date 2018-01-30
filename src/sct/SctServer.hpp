@@ -1,9 +1,6 @@
 /**
  * @Author: jakub
- * @Date:   2018-01-26T13:23:22+01:00
  * @Project: Calculator with SCT
- * @Last modified by:   jakub
- * @Last modified time: 2018-01-26T13:23:46+01:00
  * @License: MIT
  */
 
