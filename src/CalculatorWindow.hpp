@@ -24,7 +24,9 @@ public:
     explicit CalculatorWindow( QWidget* parent = 0 );
     ~CalculatorWindow();
 
-private slots:
+    std::string getScreenState();
+
+public slots:
     void on_inputNum0_clicked();
     void on_inputNum1_clicked();
     void on_inputNum2_clicked();

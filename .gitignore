@@ -1,5 +1,11 @@
+# caches
+*cache*
+
 # build dir
 build/
+
+# python cache
+__pycache__/
 
 # C++ objects and libs
 
