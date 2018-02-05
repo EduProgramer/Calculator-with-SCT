@@ -69,8 +69,11 @@ void SctServer::handle_input()
         case '/':
             calculatorWindow.on_inputOperDivis_clicked();
             break;
+        case '=':
+            calculatorWindow.on_inputOperResult_clicked();
+            break;
         case '0':
-            // TODO add support for 0
+            calculatorWindow.on_inputNum0_clicked();
             break;
         case '1':
             calculatorWindow.on_inputNum1_clicked();
