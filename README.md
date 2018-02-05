@@ -7,7 +7,7 @@
 - [x] Unit test framework for Calculator application
 - [ ] Basic Calculator features (+, -, etc.)
 - [ ] Advanced Calculator features (log, fib, power(n), etc.)
-- [ ] Real SCT written in Python
+- [X] Real SCT written in Python
 - [ ] Continuous Integration
 
 At the moment application is broken on purpose.
