@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="placeholderText">
-       <string>2 + 2 is 4 - 1 is 3</string>
+       <string/>
       </property>
      </widget>
     </item>
