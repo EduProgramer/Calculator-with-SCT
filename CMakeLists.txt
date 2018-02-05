@@ -32,3 +32,12 @@ endif()
 
 # Use the Widgets module from Qt 5.
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
+
+enable_testing()
+# add unit test executable
+list(REMOVE_ITEM SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/./src/main.cpp")
+SET(UNIT_TESTS_PROJECT ${PROJECT_NAME}_ut)
+SET(UNIT_TESTS_MAIN "./src/ut/main.cpp")
+add_executable(${UNIT_TESTS_PROJECT} ${SOURCES} ${UNIT_TESTS_MAIN} ${HEADERS} ${UI_HEADERS})
+add_test(UnitTests ${UNIT_TESTS_PROJECT})
+target_link_libraries(${UNIT_TESTS_PROJECT} Qt5::Widgets)

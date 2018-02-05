@@ -4,7 +4,7 @@
 - [x] Mocked Calculator input
 - [x] Basic python framework for SCT
 - [ ] Docker container with application
-- [ ] Unit test framework for Calculator application
+- [x] Unit test framework for Calculator application
 - [ ] Basic Calculator features (+, -, etc.)
 - [ ] Advanced Calculator features (log, fib, power(n), etc.)
 - [ ] Real SCT written in Python
