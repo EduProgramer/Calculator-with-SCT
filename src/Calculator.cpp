@@ -9,10 +9,23 @@ void Calculator::calculate( double secondOperand )
         case Operation::ADD:
             firstOperand += secondOperand;
             break;
+        case Operation::SUBTRACT:
+            firstOperand -= secondOperand;
+            break;
     }
     currentOperation = Operation::NONE;
 }
 void Calculator::add( double operand )
+{
+    parseFirstOperand( operand );
+    currentOperation = Operation::ADD;
+}
+void Calculator::subtract( double operand )
+{
+    parseFirstOperand( operand );
+    currentOperation = Operation::SUBTRACT;
+}
+void Calculator::parseFirstOperand( double operand )
 {
     if ( firstOperation )
     {
@@ -23,6 +36,5 @@ void Calculator::add( double operand )
     {
         this->secondOperand = operand;
     }
-    currentOperation = Operation::ADD;
 }
 double Calculator::getStatus() { return firstOperand; }

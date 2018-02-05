@@ -17,6 +17,8 @@ public:
     void calculate( double );
 
     void add( double );
+    void subtract( double );
+
     double getStatus();
 
 private:
@@ -24,4 +26,6 @@ private:
     double firstOperand = 0.0;
     double secondOperand = 0.0;
     Operation currentOperation = Operation::NONE;
+
+    void parseFirstOperand( double );
 };
