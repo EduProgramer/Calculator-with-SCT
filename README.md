@@ -4,13 +4,13 @@
 - [x] Mocked Calculator input
 - [x] Basic python framework for SCT
 - [ ] Docker container with application
-- [ ] Unit test framework for Calculator application
-- [ ] Basic Calculator features (+, -, etc.)
+- [x] Unit test framework for Calculator application
+- [x] Basic Calculator features (+, -, etc.) (only single operation :< )
 - [ ] Advanced Calculator features (log, fib, power(n), etc.)
-- [ ] Real SCT written in Python
+- [X] Real SCT written in Python
 - [ ] Continuous Integration
 
-At the moment application is broken on purpose.
+**At the moment application is broken on purpose.**
 
 # Calculator-with-SCT
 Educational project about writing SCT in python

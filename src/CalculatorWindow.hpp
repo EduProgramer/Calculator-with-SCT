@@ -9,6 +9,8 @@
 
 #include <QMainWindow>
 
+#include "Calculator.hpp"
+
 namespace Ui
 {
     class CalculatorWindow;
@@ -40,7 +42,14 @@ public slots:
     void on_inputOperMinus_clicked();
     void on_inputOperMulti_clicked();
     void on_inputOperPlus_clicked();
+    void on_inputOperResult_clicked();
 
 private:
     Ui::CalculatorWindow* ui;
+    Calculator calc;
+
+    QString numBuffor;
+    void addDigitToNumBuffor( QChar digit );
+
+    void updateScreen();
 };

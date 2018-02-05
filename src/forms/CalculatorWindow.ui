@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="placeholderText">
-       <string>2 + 2 is 4 - 1 is 3</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -290,6 +290,25 @@
         </property>
         <property name="text">
          <string>÷</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QPushButton" name="inputOperResult">
+        <property name="minimumSize">
+         <size>
+          <width>31</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>31</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>=</string>
         </property>
        </widget>
       </item>
