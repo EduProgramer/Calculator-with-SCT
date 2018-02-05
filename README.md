@@ -1,3 +1,6 @@
+# Calculator-with-SCT
+Educational project about writing SCT in python
+
 # ToDo list
 - [x] Drag and drop QT5 GUI support
 - [x] Comunication with SctServer via C++ REST SDK (Casablanca)
@@ -5,22 +8,19 @@
 - [x] Basic python framework for SCT
 - [ ] Docker container with application
 - [x] Unit test framework for Calculator application
-- [x] Basic Calculator features (+, -, etc.) (only single operation :< )
+- [x] Basic Calculator features (+, -, etc.) **(only single operation :< )**
 - [ ] Advanced Calculator features (log, fib, power(n), etc.)
 - [X] Real SCT written in Python
 - [ ] Continuous Integration
 
 **At the moment application is broken on purpose.**
 
-# Calculator-with-SCT
-Educational project about writing SCT in python
-
 ### Broken application
 ![gif image](./doc/gifs/manual-run-fail.gif)
 
 # Development
 1. Update your user.name and user.email for this project, do not use your company email.
-2. Use your cmake tool to build the project. Remember to check SCT_SERVER checkbox if you want to use it.
+2. Use your cmake tool to build the project. Remember to check **SCT_SERVER** checkbox if you want to use it.
 
 ## GUI
 To edit GUI open CalculatorWindow.ui form in QTCreator or in QTDesigner
@@ -30,14 +30,14 @@ To edit GUI open CalculatorWindow.ui form in QTCreator or in QTDesigner
 # SctServer communication
 
 #### How to use SctServer
-To use Calculator with SctServer you need to use cmake-gui with SCT_SERVER checkbox on.
+To use Calculator with SctServer you need to use cmake-gui with **SCT_SERVER** checkbox on.
 
 ![gif image](./doc/images/cmake-gui.png)
 
 #### Sending events to SctServer
 Servers accepts data send with post method on given address. The adress of the SctServer at this moment is set to "http://localhost:34568/SctServer/Action/"
 
-##### python example
+##### Example in python
 ```python
 import http.client
 import urllib
@@ -57,6 +57,11 @@ def sendFour():
   return json.loads(data) # return json object
 ```
 ##### Running python tests
+To run python tests you can use command listed below, where "./src/sct/test_Calculator.py" is file with tests. Tests have to be run from root of the project.
+```bash
+python3 -m pytest ./src/sct/test_Calculator.py --capture=no
+```
+
 ![gif image](./doc/gifs/test-fail.gif)
 
 ##### possible inputs
