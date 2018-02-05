@@ -18,6 +18,8 @@ public:
 
     void add( double );
     void subtract( double );
+    void divide( double );
+    void multiply( double );
 
     double getStatus();
 

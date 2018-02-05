@@ -12,6 +12,12 @@ void Calculator::calculate( double secondOperand )
         case Operation::SUBTRACT:
             firstOperand -= secondOperand;
             break;
+        case Operation::MULTIPLY:
+            firstOperand *= secondOperand;
+            break;
+        case Operation::DIVIDE:
+            firstOperand /= secondOperand;
+            break;
     }
     currentOperation = Operation::NONE;
 }
@@ -25,6 +31,17 @@ void Calculator::subtract( double operand )
     parseFirstOperand( operand );
     currentOperation = Operation::SUBTRACT;
 }
+void Calculator::divide( double operand )
+{
+    parseFirstOperand( operand );
+    currentOperation = Operation::DIVIDE;
+}
+void Calculator::multiply( double operand )
+{
+    parseFirstOperand( operand );
+    currentOperation = Operation::MULTIPLY;
+}
+
 void Calculator::parseFirstOperand( double operand )
 {
     if ( firstOperation )
