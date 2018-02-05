@@ -18,9 +18,10 @@ file(GLOB SOURCES "./src/*.cpp")
 file(GLOB HEADERS "./src/*.hpp")
 file(GLOB FORMS "./src/forms/*.ui")
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/./src ${CMAKE_CURRENT_SOURCE_DIR}/./src/sct ${CMAKE_CURRENT_SOURCE_DIR}/./src/ut)
+
 QT5_WRAP_UI( UI_HEADERS ${FORMS} )
 
-# Tell CMake to create the helloworld executable
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${UI_HEADERS})
 
 set(SCT_SERVER OFF CACHE BOOL "Do you want to build program with SCT server?")

@@ -5,7 +5,7 @@
  */
 
 #include "SctServer.hpp"
-#include "../CalculatorWindow.hpp"
+#include "CalculatorWindow.hpp"
 
 using namespace std;
 using namespace web;
